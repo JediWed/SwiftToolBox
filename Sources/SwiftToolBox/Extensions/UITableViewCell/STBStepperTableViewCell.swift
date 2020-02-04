@@ -117,7 +117,7 @@ extension STBStepperTableViewCell: UITextFieldDelegate {
         guard let text = textField.text, let value = Int(text) else {
             return false
         }
-        self.countValue = countValue.stbClamped(to: Int(stepper.minimumValue)...Int(stepper.maximumValue))
+        self.countValue = value.stbClamped(to: Int(stepper.minimumValue)...Int(stepper.maximumValue))
         return true
     }
 
