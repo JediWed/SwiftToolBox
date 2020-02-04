@@ -106,9 +106,9 @@ extension STBStepperTableViewCell: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         if let text = textField.text, let value = Int(text) {
-            self.value = value
+            self.countValue = value
         } else {
-            onChange?(self.value)
+            onChange?(self.countValue)
         }
         return true
     }
