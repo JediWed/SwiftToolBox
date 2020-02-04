@@ -16,13 +16,13 @@ public class STBStepperTableViewCell: UITableViewCell {
     
     public var minimumValue: Int = 0 {
         didSet {
-            self.stepper.minimumValue = self.minimumValue
+            self.stepper.minimumValue = Double(self.minimumValue)
         }
     }
     
     public var maximumValue: Int = 99 {
         didSet {
-            self.stepper.maximumValue = self.maximumValue
+            self.stepper.maximumValue = Double(self.maximumValue)
         }
     }
 
