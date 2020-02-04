@@ -20,10 +20,10 @@ public class STBStepperTableViewCell: UITableViewCell {
 
     public var onChange: ((Int) -> Void)?
 
-    public var value: Int = 0 {
+    public var counterValue: Int = 0 {
         didSet {
-            countTextField.text = String(value)
-            stepper.value = Double(value)
+            countTextField.text = String(counterValue)
+            stepper.value = Double(counterValue)
         }
     }
 
@@ -78,16 +78,16 @@ public class STBStepperTableViewCell: UITableViewCell {
 
     @objc private func stepperDidChange() {
         countTextField.resignFirstResponder()
-        value = Int(stepper.value)
-        countTextField.text = String(value)
-        onChange?(value)
+        counterValue = Int(stepper.value)
+        countTextField.text = String(counterValue)
+        onChange?(counterValue)
     }
 
     @objc private func textFieldDidChange() {
         guard let text = countTextField.text, let value = Int(text) else {
             return
         }
-        self.value = value
+        self.counterValue = value
         stepper.value = Double(value)
         onChange?(value)
     }
@@ -117,7 +117,7 @@ extension STBStepperTableViewCell: UITextFieldDelegate {
         guard let text = textField.text, let value = Int(text) else {
             return false
         }
-        self.value = value.stbClamped(to: Int(stepper.minimumValue)...Int(stepper.maximumValue))
+        self.counterValue = counterValue.stbClamped(to: Int(stepper.minimumValue)...Int(stepper.maximumValue))
         return true
     }
 
