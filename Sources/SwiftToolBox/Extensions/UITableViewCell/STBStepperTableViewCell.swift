@@ -7,14 +7,24 @@
 
 import UIKit
 public class STBStepperTableViewCell: UITableViewCell {
-
+    
     private let stepper: UIStepper = {
         let stepper = UIStepper()
-        stepper.minimumValue = 0
-        stepper.maximumValue = 99
         stepper.translatesAutoresizingMaskIntoConstraints = false
         return stepper
     }()
+    
+    public var minimumValue: Int = 0 {
+        didSet {
+            self.stepper.minimumValue = self.minimumValue
+        }
+    }
+    
+    public var maximumValue: Int = 99 {
+        didSet {
+            self.stepper.maximumValue = self.maximumValue
+        }
+    }
 
     private let countTextField: UITextField = UITextField()
 
