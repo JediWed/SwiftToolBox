@@ -7,7 +7,7 @@
 
 import UIKit
 
-private protocol STBTargetActionType: class {
+private protocol STBTargetActionType: AnyObject {
     var actionSelector: Selector { get }
 }
 
