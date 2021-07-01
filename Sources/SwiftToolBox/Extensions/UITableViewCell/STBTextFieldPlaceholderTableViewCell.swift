@@ -15,11 +15,15 @@ public class STBTextFieldPlaceholderTableViewCell: UITableViewCell {
         }
     }
     
-    public var title: String = ""
+    public var title: String = "" {
+        didSet {
+            self.textField.placeholder = title
+        }
+    }
 
     public let textField: UITextField = {
         let textField = UITextField()
-        textField.textAlignment = .right
+        textField.textAlignment = .left
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.accessibilityIdentifier = "stbtextfieldplaceholdertableviewcell_textfield"
         return textField
@@ -33,7 +37,6 @@ public class STBTextFieldPlaceholderTableViewCell: UITableViewCell {
 
         textLabel?.isHidden = true
         detailTextLabel?.isHidden = true
-        textField.placeholder = title
 
         textFieldTargetAction = textField.stbAddActionForControlEvents(.editingChanged) { [unowned self] (textField: UITextField) in
                 self.onChange(textField.text ?? "")
