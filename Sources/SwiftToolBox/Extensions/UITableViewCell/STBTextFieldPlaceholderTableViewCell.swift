@@ -39,13 +39,15 @@ public class STBTextFieldPlaceholderTableViewCell: UITableViewCell {
                 self.onChange(textField.text ?? "")
         }
 
+        self.selectionStyle = .none
+        
         self.contentView.addSubview(textField)
 
         addConstraints([
             NSLayoutConstraint(item: textField, attribute: .top, relatedBy: .equal,
                                toItem: contentView, attribute: .top, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: textField, attribute: .leading, relatedBy: .equal,
-                               toItem: contentView, attribute: .trailing, multiplier: 1, constant: .stbSpacingCellHorizontalPadding),
+                               toItem: contentView, attribute: .leading, multiplier: 1, constant: .stbSpacingCellHorizontalPadding),
             NSLayoutConstraint(item: textField, attribute: .trailing, relatedBy: .equal,
                                toItem: contentView, attribute: .trailing, multiplier: 1, constant: -.stbSpacingCellHorizontalPadding),
             NSLayoutConstraint(item: textField, attribute: .bottom, relatedBy: .equal,
